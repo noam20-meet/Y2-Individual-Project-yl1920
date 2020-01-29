@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Play Chess</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='play.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chessboard-1.0.0.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+  	<link rel="stylesheet" href="//cdn.jsdelivr.net/flat-ui/2.0/css/flat-ui.css"/>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+   <a class="navbar-brand" href="#">Chess game</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+	  <li class="nav-item active">
+		<a class="nav-link" href="{{ url_for('home') }}">Home</a><span class="sr-only">(current)</span></a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="{{ url_for('play') }}">Play</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="{{ url_for('login') }}">Login</a>
+	  </li>
+
+	</form>
+  </div>
+</nav>
+
+<center>
+</br>
+</br>
+<div id="board2" style="width: 400px"></div>
+</br>
+<button id="startBtn">Start Position</button>
+<button id="clearBtn">Clear Board</button>
+
+</center>
+
+<script>
+
+function toggleButtons(elem) {
+	console.log("doing the functino thing");
+    if (elem === "right") {
+
+      $("#left .toggle").prop("disabled", false);
+      $("#right .toggle").prop("disabled", true);
+
+
+      $("#right .toggle").addClass("btn-default btn-disabled");
+      $("#right .toggle").removeClass("btn-primary");
+      return $("#left .toggle").addClass("btn-primary");
+    } else if (elem === "left") {
+
+      $("#left .toggle").prop("disabled", true);
+      $("#right .toggle").prop("disabled", false);
+
+      $("#left .toggle").addClass("btn-default btn-disabled");
+      $("#left .toggle").removeClass("btn-primary");
+      return $("#right .toggle").addClass("btn-primary");
+    }
+};
+</script>
+
+<div class="flex-container">
+    <div class="time-container" id="left">
+      <input class="toggle btn btn-lg btn-primary btn-block" type="button" onclick="toggleButtons(right)" value="Player 1"/><span class="time"></span>
+    </div>
+    <div class="time-container" id="controls">
+      <div class="form-group">
+        <input class="form-control" id="time-input" type="number" placeholder="Minutes" min="1" value="20"/>
+        <input class="form-control btn btn-block btn-default" id="pause" type="button" value="Pause"/>
+        <input class="btn btn-block btn-danger" id="reset" type="button" value="Reset"/>
+      </div>
+    </div>
+    <div class="time-container" id="right">
+      <input class="toggle btn btn-lg btn-primary" type="button" onclick="toggleButtons(left)" value="Player 2"/><span class="time"></span>
+    </div>
+</div>
+<script type="text/javascript" src="../static/chessboard-1.0.0.js"></script>
+<script type="text/javascript" src="../static/chess2.js"></script>
+<script type="text/javascript" src="../static/play.js"></script>
+
+
+
+
+
+</body>
+</html>

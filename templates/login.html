@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login page</title>
+  
+</head>
+<body>
+  <center>
+  <div class="container">
+    <h1>Login Page</h1>
+    <br>
+    <form action="/login" method="POST">
+      Username:<input type="text" placeholder="Username" name="username" value="{{
+        request.form.username }}">
+        <br>
+        <br>
+       Password:<input type="password" placeholder="Password" name="password" value="{{
+        request.form.password }}">
+        <br>
+        <br>
+      <input class="btn btn-default" type="submit" value="Login">
+    </form>
+    {% if error %}
+      <p class="error"><b>Error:</b> {{ error }}
+    {% endif %}
+  </div>
+</center>
+</body>
+</html>

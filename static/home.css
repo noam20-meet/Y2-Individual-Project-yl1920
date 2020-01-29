@@ -1,0 +1,30 @@
+#chessboard, .black_square, .white_square {
+	padding:0px;
+	margin:0px;
+	position:relative;
+	top:70px;
+}
+
+#chessboard {
+	width:600px;
+	height:600px;
+	position:relative; 
+	top:70px;
+
+	
+}
+
+.black_square, .white_square {
+	width:75px;
+	height:75px;
+	float:left;
+	position:relative; 
+	top:70px;
+}
+
+.black_square {
+	background-color:#000000;
+}
+
+.white_square {
+	background-color:#FFFFFF;

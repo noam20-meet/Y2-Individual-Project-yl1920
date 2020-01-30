@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chessboard-1.0.0.css') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
-  	<link rel="stylesheet" href="//cdn.jsdelivr.net/flat-ui/2.0/css/flat-ui.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/flat-ui/2.0/css/flat-ui.css"/>
 
 </head>
 <body>
@@ -28,15 +28,15 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	<ul class="navbar-nav mr-auto">
-	  <li class="nav-item active">
-		<a class="nav-link" href="{{ url_for('home') }}">Home</a><span class="sr-only">(current)</span></a>
-	  </li>
 	  <li class="nav-item">
 		<a class="nav-link" href="{{ url_for('play') }}">Play</a>
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link" href="{{ url_for('login') }}">Login</a>
 	  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('login') }}">Portal</a>
+    </li>
 
 	</form>
   </div>
@@ -61,7 +61,37 @@
 
 </center>
 
+
+
 <script>
+
+var game = new Chess();
+
+var board2 = new ChessBoard('board', {
+  draggable: true,
+  dropOffBoard: 'snapback',
+  sparePieces: false,
+  onChange:  onBoardPositionChanged,
+  onDrop: onPieceDropped
+});
+board.start();
+
+function onPieceDropped(fromSquare, toSquare, piece){
+  proposedMove = {from: fromSquare, to: toSquare};
+  if (game.move(proposedMove)){
+    return;
+  }else{
+    return 'snapback';
+  }
+};
+
+function onBoardPositionChanged(oldPosition, newPosition){
+  if (game.game_over()){
+    lblMoves.innerHTML = 'Game Over!';
+  }else{
+    lblMoves.innerHTML = 'Legal moves: ' + game.moves();
+  }
+};
 
 function toggleButtons(elem) {
 	console.log("doing the functino thing");

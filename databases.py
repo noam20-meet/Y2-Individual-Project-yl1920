@@ -10,63 +10,34 @@ Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-def add_product(name, price, picturelink, description):
+def add_win(name, score,time):
 	 
-		product_object = Product(
+		win_object = Win(
 		name= name,
-		price= price,
-		picturelink= picturelink,
-		description= description)
-		session.add(product_object)
+		score=score,
+		time= time)
+		session.add(win_object)
 		session.commit()
-
-
-
-def update_product_status(name, price, picturelink,  description):
-	
-	 product_object = session.query(
-			 Product).filter_by(
-			 name=name).first()
-	 product_object.price = price
-	 session.commit()
-
-
-def delete_product(their_price):
-	
-	 session.query(Product).filter_by(
-			price=price ).delete()
-	 session.commit()
-
 
 
 
 def query_all():
 	 
-	 products = session.query(
-			Product).all()
-	 return products
-
-
+	 users = session.query(
+			User).all()
+	 return users
 
 
 def query_by_name(their_name):
 
-	 product = session.query(
-			 Product).filter_by(
+	 user= session.query(
+			 User).filter_by(
 			 name=name).first()
-	 return product
+	 return user
 
 
 
 
-
-def add_to_cart(product_id):
-
-	cart_object = Cart(
-	product_id=product_id)
-	session.add(cart_object)
-	session.commit()
-	
 
 
 

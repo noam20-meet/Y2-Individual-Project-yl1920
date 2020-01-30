@@ -26,7 +26,17 @@ def login():
 		else:
 			return render_template("portal.html" )
 	else:
-		return render_template('../Login_v2/index.html', error=error)
+		return render_template('login.html', error=error)
+
+
+@app.route('/portal' ,  methods=['GET', 'POST'])
+def portal_add():
+	if request.method == 'GET':
+		name =request.form["name"]
+		score = request.form["score"]
+		time= request.form["time"]
+		portal_add(name, score, time)
+		return render_template("play.html")
 
 
 if __name__ == '__main__':

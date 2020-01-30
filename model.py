@@ -5,20 +5,21 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class Product(Base):
-   __tablename__ = 'Product'
+class User(Base):
+   __tablename__ = 'Users'
    id = Column(Integer, primary_key=True)
    name = Column(String)
-   price = Column(Integer)
-   picturelink = Column(String)
-   description = Column(String)
+   nummOfWin= Column(Integer)
+
+  
    
 
 
-class Cart (Base):
+class Win (Base):
    __tablename__ = 'Cart'
    id= Column(String, primary_key=True)
-   product_id= Column(Integer)
+   score= Column(Integer)
+   time= Column(Integer)
    
 
 

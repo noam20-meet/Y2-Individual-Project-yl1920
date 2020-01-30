@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+<body bgcolor="#C0C0C0">
 
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
@@ -17,11 +17,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/flat-ui/2.0/css/flat-ui.css"/>
-
+  
 </head>
-<body>
+<body style="background-color:#C0C0C0;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-   <a class="navbar-brand" href="#">Chess game</a>
+  <a class="navbar-brand" href="#">Chess game</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
@@ -43,26 +43,41 @@
 </nav>
 
 <center>
-</br>
-</br>
-<div class="time-container" id="controls">
-<div class="form-group">
-  <input class="form-control" id="time-input" type="number" placeholder="Minutes" min="1" value="20"/>
-  <input class="form-control btn btn-block btn-default" id="pause" type="button" value="Pause"/>
-  <input class="btn btn-block btn-danger" id="reset" type="button" value="Reset"/>
+  </br>
+  </br>
+  <div class="time-container" id="controls">
+    <div class="form-group">
+      <input class="form-control" id="time-input" type="number" placeholder="Minutes" min="1" value="20"/>
+      <input class="form-control btn btn-block btn-default" id="pause" type="button" value="Pause"/>
+      <input class="btn btn-block btn-danger" id="reset" type="button" value="Reset"/>
+    </div>
+  </div>
+  </br>
+  </br>
+  <div id="board2" style="width: 400px"></div>
+  </br>
+  <button id="startBtn">Start Position</button>
+  <button id="clearBtn">Clear Board</button>
+</center>
+<center>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="time-container" id="left" style="position: relative; transform: translate(-50%, -200%)">
+        <input class="toggle btn btn-lg btn-primary btn-block" type="button" onclick="toggleButtons(right)" value="Player 1"/><span class="time"></span>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div id="board2" style="width: 400px"></div>
+    </div>
+    <div class="col-sm">
+      <div class="time-container" id="right" style="position: relative; transform: translate(50%, -200%)">
+        <input class="toggle btn btn-lg btn-primary btn-block" type="button" onclick="toggleButtons(left)" value="Player 2"/><span class="time"></span>
+      </div>
+    </div>
   </div>
 </div>
-</br>
-</br>
-<div id="board2" style="width: 400px"></div>
-</br>
-<button id="startBtn">Start Position</button>
-<button id="clearBtn">Clear Board</button>
-
 </center>
-
-
-
 <script>
 
 var game = new Chess();
@@ -116,14 +131,14 @@ function toggleButtons(elem) {
 };
 </script>
 
-<div class="flex-container">
+<!-- <div class="flex-container">
     <div class="time-container" id="left">
       <input class="toggle btn btn-lg btn-primary btn-block" type="button" onclick="toggleButtons(right)" value="Player 1"/><span class="time"></span>
     </div>
     <div class="time-container" id="right">
       <input class="toggle btn btn-lg btn-primary" type="button" onclick="toggleButtons(left)" value="Player 2"/><span class="time"></span>
     </div>
-</div>
+</div> -->
 <script type="text/javascript" src="../static/chessboard-1.0.0.js"></script>
 <script type="text/javascript" src="../static/chess2.js"></script>
 <script type="text/javascript" src="../static/play.js"></script>
